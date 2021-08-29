@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:300i,400,400i,700,700i,800');
+@import url('https://fonts.googleapis.com/css?family=Cousine:400,700');
+@font-face {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    src: url(../fonts/9412.ttf);
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+@font-face {
+    font-family: Socialico;
+    src: url(../fonts/Socialico.ttf);
+}
+
+$hoverColor: #444444;
+
+@mixin topBarFont {
+    font-family: 'Merriweather Sans', sans-serif;
+    color:  #7e7e7e;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+@mixin merriweather {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+@mixin cousine {
+    font-family: 'Cousine', monospace;
+}
+
+@mixin robotoCondense {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+@mixin offerLink {
+    text-decoration: none;
+    @include merriweather;
+    color:  #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 22px;
+
+    &:after {
+        content: '>';
+        padding-left: 2px;
+    }
+}
+
+@mixin sizePx {
+    font-family: Arial, sans-serif;
+    color:  #ffffff;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+@mixin afterbefore ($widthLine, $heightLine, $bcgColor, $leftBefore, $leftAfter, $tops) {
+
+    &::before,
+    &:after {
+        content: '';
+        width: $widthLine;
+        height: $heightLine;
+        position: absolute;
+        background: $bcgColor;
+    }
+
+    &:before {
+        left: $leftBefore;
+        top: $tops;
+    }
+
+    &::after {
+        left: $leftAfter;
+        top: $tops;
+    }
+}
+
+@mixin searchHeaderMixin ($widthPos, $heightPos, $topPos, $leftPos, $pad) {
+    position: relative;
+
+    .searchHeader__input {
+        width: $widthPos;
+        height: $heightPos;
+        border: 1px solid #e1e1e1;
+        box-sizing: border-box;
+        padding-left: 11px;
+        padding-right: 48px;
+        font-family: 'Trebuchet MS', sans-serif;
+        color:  #888888;
+        font-size: 13px;
+        font-weight: 400;
+
+        // &:focus .searchHeader__search {
+        //     color: $hoverColor;
+        //     background-color: #e1e1e1;
+        // }
+    }
+
+    a {
+        position: absolute;
+        color: #888888;
+        font-size: 14px;
+        top: $topPos;
+        left: $leftPos;
+        display: block;
+        padding: $pad;
+
+        &:hover {
+            color: $hoverColor;
+            background-color: #e1e1e1;
+        }
+
+        &:focus {
+            outline: none;
+            // color: $hoverColor;
+            // background-color: #e1e1e1;
+        }
+    }
+}
+
+@mixin mainMenuListMixin () {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+
+    .mainMenuList__item {
+        text-decoration: none;
+        @include cousine;
+        color:  #565656;
+        font-size: 14px;
+        font-weight: 700;
+
+        &:hover {
+            color: #cccccc;
+        }
+    }
+}
+
+.indicatorWrap {
+    &__indicator {
+        display: flex;
+
+        & a {
+            color: #fff;
+            font-size: 13px;
+            padding: 4px;
+        }
+    }
+
+    &_lookbook {
+        position: absolute;
+    }
+
+    &_automnStyle {
+        align-self: center;
+
+        & a {
+            padding: 6px;
+        }
+    }
+}
+
+@mixin offerMixin ($colorOffer, $foWeight, $topPad, $leftPad, $topPos, $leftPos) {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    font-weight: $foWeight;
+    color: $colorOffer;
+    border: solid 3px $colorOffer;
+    padding: $topPad $leftPad;
+    position: absolute;
+    top: $topPos;
+    left: $leftPos;
+}
+
+@mixin oneRectangle () {
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0 0 0 2px #ffffff;
+    border: solid 1px #555555;
+    box-sizing: border-box;
+}
+
